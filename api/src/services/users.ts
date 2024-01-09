@@ -404,7 +404,7 @@ export class UsersService extends ItemsService {
 
 			// Send invite for new and already invited users
 			if (isEmpty(user) || user.status === 'invited') {
-				const subjectLine = subject ?? "You've been invited";
+				const subjectLine = subject ?? "Vous avez été invité";
 
 				await mailService.send({
 					to: user?.email ?? email,
@@ -472,7 +472,7 @@ export class UsersService extends ItemsService {
 			? new Url(url).setQuery('token', token).toString()
 			: new Url(env['PUBLIC_URL'] as string).addPath('admin', 'reset-password').setQuery('token', token).toString();
 
-		const subjectLine = subject ? subject : 'Password Reset Request';
+		const subjectLine = subject ? subject : 'Demande de réinitialisation du mot de passe';
 
 		await mailService.send({
 			to: user.email,
